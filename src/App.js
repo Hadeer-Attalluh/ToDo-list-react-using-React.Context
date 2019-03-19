@@ -32,21 +32,21 @@ class App extends Component {
   uncompleteTodo(id) {
     debugger
     const { todos } = this.state;
-    const newTodos = todos.slice;
+    const newTodos = todos.slice();
     const taskIndex = newTodos.findIndex(task => task.id === id);
     newTodos[taskIndex].complete = false;
     this.setState({ todos: [...newTodos] });
   }
   deleteTodo(id) {
     const { todos } = this.state;
-    const newTodos = todos.slice;
+    const newTodos = todos.slice();
     const taskIndex = newTodos.findIndex(task => task.id === id);
     newTodos[taskIndex].deleted = true;
     this.setState({ todos: [...newTodos] });
   }
   undeleteTodo(id) {
     const { todos } = this.state;
-    const newTodos = todos.slice;
+    const newTodos = todos.slice();
     const taskIndex = newTodos.findIndex(task => task.id === id);
     newTodos[taskIndex].deleted = false;
     this.setState({ todos: [...newTodos] });
