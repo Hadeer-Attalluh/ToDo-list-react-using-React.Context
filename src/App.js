@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [{ task: "00", id: "1236", complete: false, deleted: false }],
+      todos: [],
     }
     this.addTodo = this.addTodo.bind(this);
     this.completeTodo = this.completeTodo.bind(this);
@@ -22,7 +22,7 @@ class App extends Component {
     this.setState({ todos: [...todos.concat(task)] });
   }
   completeTodo(id) {
-    debugger
+    // debugger
     const { todos } = this.state;
     const newTodos = todos.slice();
     const taskIndex = newTodos.findIndex((task) => task.id === id);
@@ -30,7 +30,7 @@ class App extends Component {
     this.setState({ todos: [...newTodos] });
   }
   uncompleteTodo(id) {
-    debugger
+    // debugger
     const { todos } = this.state;
     const newTodos = todos.slice();
     const taskIndex = newTodos.findIndex(task => task.id === id);
