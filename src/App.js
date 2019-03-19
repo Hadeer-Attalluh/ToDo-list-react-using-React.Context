@@ -11,54 +11,59 @@ class App extends Component {
       todos: [],
     }
     this.addTodo = this.addTodo.bind(this);
-    this.completeTodo = this.completeTodo.bind(this);
-    this.uncompleteTodo = this.uncompleteTodo.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
-    this.undeleteTodo = this.undeleteTodo.bind(this);
+    // this.completeTodo = this.completeTodo.bind(this);
+    // this.uncompleteTodo = this.uncompleteTodo.bind(this);
+    this.toggleCompleteToDo = this.toggleCompleteToDo.bind(this);
+    // this.deleteTodo = this.deleteTodo.bind(this);
+    // this.undeleteTodo = this.undeleteTodo.bind(this);
+    this.toggleDeleteTodo = this.toggleDeleteTodo.bind(this);
   }
   addTodo(task) {
     // debugger
     const { todos } = this.state;
     this.setState({ todos: [...todos.concat(task)] });
   }
-  completeTodo(id) {
+  // completeTodo(id) {
+  //   // debugger
+  //   const { todos } = this.state;
+  //   const newTodos = todos.slice();
+  //   const taskIndex = newTodos.findIndex((task) => task.id === id);
+  //   newTodos[taskIndex].complete = true;
+  //   this.setState({ todos: [...newTodos] });
+  // }
+  toggleCompleteToDo(id) {
     // debugger
     const { todos } = this.state;
     const newTodos = todos.slice();
-    const taskIndex = newTodos.findIndex((task) => task.id === id);
-    newTodos[taskIndex].complete = true;
+    const taskIndex = newTodos.findIndex(task => task.id === id);
+    newTodos[taskIndex].complete = !(newTodos[taskIndex].complete);
     this.setState({ todos: [...newTodos] });
   }
-  uncompleteTodo(id) {
-    // debugger
+  toggleDeleteTodo(id) {
+    debugger
     const { todos } = this.state;
     const newTodos = todos.slice();
     const taskIndex = newTodos.findIndex(task => task.id === id);
-    newTodos[taskIndex].complete = false;
+    newTodos[taskIndex].deleted = !(newTodos[taskIndex].deleted);
     this.setState({ todos: [...newTodos] });
   }
-  deleteTodo(id) {
-    const { todos } = this.state;
-    const newTodos = todos.slice();
-    const taskIndex = newTodos.findIndex(task => task.id === id);
-    newTodos[taskIndex].deleted = true;
-    this.setState({ todos: [...newTodos] });
-  }
-  undeleteTodo(id) {
-    const { todos } = this.state;
-    const newTodos = todos.slice();
-    const taskIndex = newTodos.findIndex(task => task.id === id);
-    newTodos[taskIndex].deleted = false;
-    this.setState({ todos: [...newTodos] });
-  }
+  // undeleteTodo(id) {
+  //   const { todos } = this.state;
+  //   const newTodos = todos.slice();
+  //   const taskIndex = newTodos.findIndex(task => task.id === id);
+  //   newTodos[taskIndex].deleted = false;
+  //   this.setState({ todos: [...newTodos] });
+  // }
   render() {
     const value = {
       todos: this.state.todos,
       addTodo: this.addTodo,
-      completeTodo: this.completeTodo,
-      uncompleteTodo: this.uncompleteTodo,
-      deleteTodo: this.deleteTodo,
-      undeleteTodo: this.undeleteTodo,
+      // completeTodo: this.completeTodo,
+      // uncompleteTodo: this.uncompleteTodo,
+      toggleComplete:this.toggleCompleteToDo,
+      // deleteTodo: this.deleteTodo,
+      // undeleteTodo: this.undeleteTodo,
+      toggleDelete:this.toggleDeleteTodo,
     }
     return (
       <appContext.Provider value={value}>

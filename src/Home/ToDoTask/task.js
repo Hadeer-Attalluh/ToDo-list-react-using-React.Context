@@ -35,14 +35,17 @@ export class ToDoTask extends React.Component {
                                         <Form.Check
                                             label="Done"
                                             name="complete"
-                                            onChange={!(this.props.complete) ? this.onChange(value.completeTodo) : this.onChange(value.uncompleteTodo)}
+                                            // onChange={!(this.props.complete) ? this.onChange(value.completeTodo) : this.onChange(value.uncompleteTodo)}
+                                            onChange={this.onChange(value.toggleComplete)}
+
                                             checked={this.props.complete}
                                             disabled={this.props.deleted}
                                         />
                                     </Col>
                                     <Col col={1}>
                                         <i className="fas fa-trash-alt"
-                                            onClick={!(this.props.deleted) ? this.onChange(value.deleteTodo) : this.onChange(value.undeleteTodo)}>
+                                            onClick={this.onDelete(value.toggleDelete)}
+                                        >
                                             {(this.props.deleted ? "Undelete" : "Delete")}</i>
                                     </Col>
                                 </Row>
